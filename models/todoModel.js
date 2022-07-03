@@ -1,22 +1,11 @@
-const data = [
-    {
-        _id: 2030, 
-        title: 'todo title 1', 
-        description: 'description from todo 1',
-        timestamp: '10-10-2022'
-    },
-    {
-        _id: 2230, 
-        title: 'todo title 1', 
-        description: 'description from todo 1',
-        timestamp: '10-10-2022'
-    },
-    {
-        _id: 2130, 
-        title: 'todo title 1', 
-        description: 'description from todo 1',
-        timestamp: '10-10-2022'
-    },
-];
+const mongoose = require('mongoose');
 
-module.exports = data;
+const todosSchema = new mongoose.Schema({
+    title: {type: String, required: true},
+    description: {type: String, required: true },
+    iscompleted: {type: Boolean, default: false},
+    timestamp: {type: String, default: Date.now}
+});
+
+
+module.exports = mongoose.model('todos', todosSchema);
